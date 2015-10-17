@@ -25,7 +25,7 @@ class Order extends Application {
         $neworder->num = $order_num;
         $neworder->date = date();
         $neworder->status = 'a';
-        $neworder->total = 0;
+        $neworder->total = $this->orders->total($order_num);
         $this->orders->add($neworder);
         redirect('/order/display_menu/' . $order_num);
     }
@@ -80,6 +80,8 @@ class Order extends Application {
     // add an item to an order
     function add($order_num, $item) {
         //FIXME
+        
+        $this->orders->add_item($order_num, $item);
         redirect('/order/display_menu/' . $order_num);
     }
 

@@ -23,7 +23,7 @@ class Order extends Application {
         
         $neworder = $this->orders->create();
         $neworder->num = $order_num;
-        $neworder->date = date();
+        $neworder->date = date(DATE_ATOM);
         $neworder->status = 'a';
         $neworder->total = $this->orders->total($order_num);
         $this->orders->add($neworder);

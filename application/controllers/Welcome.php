@@ -24,7 +24,9 @@ class Welcome extends Application {
         $this->data['pagebody'] = 'welcome';
 
         // Get all the completed orders
-        //FIXME
+        //fixed in order to contain the order data as an assosiative array
+        //completed orders can be distinguished by their status being 'c'
+        $completed = $this->orders->some('status', 'c');
 
         // Build a multi-dimensional array for reporting
         $orders = array();
